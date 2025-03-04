@@ -6,8 +6,11 @@ def deposito(saldo, extrato):
 
 def sacar(saldo, extrato):
     valor_saque = int(input("Qual é o valor do saque?: "))
-    saldo = saldo - valor_saque
-    extrato["saques"].append(valor_saque)
+    if valor_saque <= saldo:
+        saldo = saldo - valor_saque
+        extrato["saques"].append(valor_saque)
+    else:
+        print("Saldo insuficiente")
     return saldo
 
 def exibir_extrato(saldo, extrato):
