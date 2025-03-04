@@ -14,10 +14,14 @@ def depositar(saldo, extrato):
         float: O novo saldo após o depósito.
     """
     valor_deposito = int(input("Qual é o valor do depósito?: "))
-    saldo = saldo + valor_deposito
-    extrato["depositos"].append(valor_deposito)
-    print("Depósito efetuado com sucesso\n")
-    return saldo
+    if valor_deposito < 0:
+        print("Valor inválido\n")
+        return saldo
+    else:
+        saldo = saldo + valor_deposito
+        extrato["depositos"].append(valor_deposito)
+        print("Depósito efetuado com sucesso\n")
+        return saldo
 
 def sacar(saldo, extrato):
     """
