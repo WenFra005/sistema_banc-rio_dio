@@ -1,5 +1,6 @@
 """
-Esse programa simula um sistema bancário simples, permitindo que o usuário faça depósitos, saques e exiba o extrato da conta.
+Esse programa simula um sistema bancário simples, permitindo que o usuário faça depósitos,
+saques e exiba o extrato da conta.
 """
 def depositar(saldo, extrato):
     """
