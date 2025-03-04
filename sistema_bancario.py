@@ -1,23 +1,30 @@
 def deposito(saldo, extrato):
     valor_deposito = int(input("Qual é o valor do depósito?: "))
     saldo = saldo + valor_deposito
-    extrato.append(valor_deposito)
+    extrato["depositos"].append(valor_deposito)
     return saldo
 
 def sacar(saldo, extrato):
     valor_saque = int(input("Qual é o valor do saque?: "))
     saldo = saldo - valor_saque
-    extrato.append(valor_saque)
+    extrato["saques"].append(valor_saque)
     return saldo
 
 def exibir_extrato(saldo, extrato):
-    extrato_list = extrato
-    print("Saldo: ", saldo)
-    print(extrato_list)
+    print("Saldo: R$ {:.2f}".format(saldo))
+    print("Depósitos: ")
+    for i, valor in enumerate(extrato["depositos"]):
+        print(f"{i + 1}. R$ {valor:.2f}")
+    print("Saques: ")
+    for i, valor in enumerate(extrato["saques"]):
+        print(f"{i + 1}. R$ {valor:.2f}")
 
 def main():
     saldo = 0
-    extrato = []
+    extrato = {
+        "depositos": [],
+        "saques": []
+    }
     while True:
         print("1 - Depositar")
         print("2 - Sacar")
