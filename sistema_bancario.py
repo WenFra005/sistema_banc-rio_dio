@@ -1,4 +1,17 @@
+"""
+Esse programa simula um sistema bancário simples, permitindo que o usuário faça depósitos, saques e exiba o extrato da conta.
+"""
 def depositar(saldo, extrato):
+    """
+    Realiza um depósito na conta.
+
+    Args:
+        saldo (float): O saldo atual da conta.
+        extrato (dict): O extrato da conta contendo listas de depósitos e saques.
+
+    Returns:
+        float: O novo saldo após o depósito.
+    """
     valor_deposito = int(input("Qual é o valor do depósito?: "))
     saldo = saldo + valor_deposito
     extrato["depositos"].append(valor_deposito)
@@ -6,6 +19,16 @@ def depositar(saldo, extrato):
     return saldo
 
 def sacar(saldo, extrato):
+    """
+    Realiza um saque na conta.
+
+    Args:
+        saldo (float): O saldo atual da conta.
+        extrato (dict): O extrato da conta contendo listas de depósitos e saques.
+
+    Returns:
+        float: O novo saldo após o saque, ou o saldo atual se o saque não for possível.
+    """
     valor_saque = int(input("Qual é o valor do saque?: "))
     if valor_saque <= saldo:
         saldo = saldo - valor_saque
@@ -15,6 +38,13 @@ def sacar(saldo, extrato):
     return saldo
 
 def exibir_extrato(saldo, extrato):
+    """
+    Exibe o extrato da conta, incluindo depósitos, saques e o saldo atual.
+
+    Args:
+        saldo (float): O saldo atual da conta.
+        extrato (dict): O extrato da conta contendo listas de depósitos e saques.
+    """
     print("------Extrato------")
     print("---Depósitos---")
     for i, valor in enumerate(extrato["depositos"]):
@@ -23,11 +53,14 @@ def exibir_extrato(saldo, extrato):
     for i, valor in enumerate(extrato["saques"]):
         print(f"{i + 1}. R$ {valor:.2f}")
     print("-------------------")
-    print("Saldo: R$ {:.2f}".format(saldo))
+    print(f"Saldo: R$ {saldo:.2f}")
     print("\n")
 
 
 def main():
+    """
+    Função principal que gerencia o fluxo do programa de operações bancárias.
+    """
     saldo = 0
     extrato = {
         "depositos": [],
