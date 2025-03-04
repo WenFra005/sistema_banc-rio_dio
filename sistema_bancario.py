@@ -1,7 +1,8 @@
-def deposito(saldo, extrato):
+def depositar(saldo, extrato):
     valor_deposito = int(input("Qual é o valor do depósito?: "))
     saldo = saldo + valor_deposito
     extrato["depositos"].append(valor_deposito)
+    print("Depósito efetuado com sucesso\n")
     return saldo
 
 def sacar(saldo, extrato):
@@ -10,17 +11,21 @@ def sacar(saldo, extrato):
         saldo = saldo - valor_saque
         extrato["saques"].append(valor_saque)
     else:
-        print("Saldo insuficiente")
+        print("Saldo insuficiente\n")
     return saldo
 
 def exibir_extrato(saldo, extrato):
-    print("Saldo: R$ {:.2f}".format(saldo))
-    print("Depósitos: ")
+    print("------Extrato------")
+    print("---Depósitos---")
     for i, valor in enumerate(extrato["depositos"]):
         print(f"{i + 1}. R$ {valor:.2f}")
-    print("Saques: ")
+    print("---Saques---")
     for i, valor in enumerate(extrato["saques"]):
         print(f"{i + 1}. R$ {valor:.2f}")
+    print("-------------------")
+    print("Saldo: R$ {:.2f}".format(saldo))
+    print("\n")
+
 
 def main():
     saldo = 0
@@ -29,13 +34,15 @@ def main():
         "saques": []
     }
     while True:
+
         print("1 - Depositar")
         print("2 - Sacar")
         print("3 - Extrato")
         print("4 - Sair")
+
         opcao = input("Escolha uma opção: ")
         if opcao == "1":
-            saldo = deposito(saldo, extrato)
+            saldo = depositar(saldo, extrato)
         elif opcao == "2":
             saldo = sacar(saldo, extrato)
         elif opcao == "3":
